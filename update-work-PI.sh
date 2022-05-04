@@ -9,6 +9,10 @@ existing_quotas=$(curl -u ${VAST_USER}:${VAST_PASS} --insecure -s -X GET "https:
 
 echo $pi_groups | tr "," "\n" | while read LINE
 do
+    if [ "$LINE" == "" ]; then
+        continue
+    fi
+
     if echo $existing_quotas | grep -q -w -P "work-${LINE}"; then
         echo "Quota for ${LINE} already exists, skipping..."
     else
