@@ -28,20 +28,25 @@ do
         owner=${LINE#"pi_"}
         echo $owner
 
-        echo "Setting ownership on ${LINE}..."
-        chown owner:$LINE ${WORK_MOUNT_PATH}/${LINE}
-        if [ $? -eq 0 ]; then
-            echo "OK"
-        else
-            echo "FAIL"
-        fi
 
-        echo "Setting permissions on ${LINE}..."
-        chmod 770 ${WORK_MOUNT_PATH}/${LINE}
-        if [ $? -eq 0 ]; then
-            echo "OK"
-        else
-            echo "FAIL"
-        fi
+	echo "Settings perms on ${LINE}..."
+	install -d -m 2770 -o $owner -g ${LINE} ${WORK_MOUNT_PATH}/${LINE}
+
+        #echo "Setting ownership on ${LINE}..."
+        #chown $owner:$LINE ${WORK_MOUNT_PATH}/${LINE}
+        #if [ $? -eq 0 ]; then
+        #    echo "OK"
+        #else
+        #    echo "FAIL"
+        #fi
+
+        #echo "Setting permissions on ${LINE}..."
+        #chmod 770 ${WORK_MOUNT_PATH}/${LINE}
+	#chmod g+s ${WORK_MOUNT_PATH}/${LINE}
+        #if [ $? -eq 0 ]; then
+        #    echo "OK"
+        #else
+        #    echo "FAIL"
+        #fi
     fi
 done

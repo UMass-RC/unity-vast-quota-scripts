@@ -25,20 +25,22 @@ do
             echo "FAIL"
         fi
 
-        echo "Setting ownership on ${LINE}..."
-        chown $LINE:$LINE ${HOME_MOUNT_PATH}/${LINE}
-        if [ $? -eq 0 ]; then
-            echo "OK"
-        else
-            echo "FAIL"
-        fi
+	install -d -m 0700 -o ${LINE} -g ${LINE} ${HOME_MOUNT_PATH}/${LINE}
 
-        echo "Setting permissions on ${LINE}..."
-        chmod 700 ${HOME_MOUNT_PATH}/${LINE}
-        if [ $? -eq 0 ]; then
-            echo "OK"
-        else
-            echo "FAIL"
-        fi
+        #echo "Setting ownership on ${LINE}..."
+        #chown $LINE:$LINE ${HOME_MOUNT_PATH}/${LINE}
+        #if [ $? -eq 0 ]; then
+        #    echo "OK"
+        #else
+        #    echo "FAIL"
+        #fi
+
+        #echo "Setting permissions on ${LINE}..."
+        #chmod 700 ${HOME_MOUNT_PATH}/${LINE}
+        #if [ $? -eq 0 ]; then
+        #    echo "OK"
+        #else
+        #    echo "FAIL"
+        #fi
     fi
 done
