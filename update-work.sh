@@ -25,7 +25,7 @@ do
             echo "FAIL"
         fi
 
-        install -d -m 07000 -o ${LINE} -g ${LINE} /${WORK_MOUNT_PATH}/${LINE}
+        install -d -m 0700 -o ${LINE} -g ${LINE} /${WORK_MOUNT_PATH}/${LINE}
 
         #echo "Setting ownership on ${LINE}..."
         #chown $LINE:$LINE ${WORK_MOUNT_PATH}/${LINE}
